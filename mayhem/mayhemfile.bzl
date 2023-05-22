@@ -1,9 +1,3 @@
-"""Generate a file using a template.
-
-It is much more memory-efficient to use a template file than creating the whole
-content during the analysis phase.
-"""
-
 def mayhemfile(**kwargs):
     _mayhemfile(
         source_file = "{name}.mayhemfile".format(**kwargs),
