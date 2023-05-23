@@ -16,7 +16,7 @@ mayhemfile(
     project = "bazel_rules",
     target = "b2sum",
     command = "./b2sum --status --ignore-missing @@",
-    second_command = "./b2sum --status --ignore-missing @@", # just a duplicate in this example; in real life, you want to provide both an instrumented and uninstrumented target to take advantage of SE
+    second_command = "./uninst/b2sum --status --ignore-missing @@", # just a duplicate in this example; in real life, you want to provide both an instrumented and uninstrumented target to take advantage of SE
     image = "ubuntu:latest",
     duration = "90",
     tasks = [
@@ -32,10 +32,7 @@ mayhemfile(
     max_length = "8192",
     cwd = "/bin",
     filepath = "/tmp/customfile",
-    env = [
-      "FOO: foo",
-      "BAR: bar"
-    ],
+    env = {"FOO": "foo", "BAR": "bar"},
     cmd_timeout = "3",
     memory_limit = "8192",
     sanitizer = "false",
@@ -48,7 +45,7 @@ mayhemfile(
 # Generates a network target Mayhemfile
 mayhemfile(
     name = "lighttpd",
-    version = "2.3",
+    version = "2.0",
     project = "bazel_rules",
     target = "lighttpd",
     command = "/usr/local/sbin/lighttpd -D -f /usr/local/etc/lighttpd.conf",

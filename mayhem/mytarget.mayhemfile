@@ -26,14 +26,14 @@ cmds:
   # Command used to start the target, "@@" is the input file
   # (when "@@" is omitted Mayhem defaults to stdin inputs)
   - cmd: {COMMAND}
-    {SECOND_COMMAND}
-    {ENV}
+    env: {ENV}
     {LIBFUZZER}
     {AFL}
     {HONGGFUZZ}
     {SANITIZER}
     {CWD}
     {FILEPATH}
+  {SECOND_COMMAND}
 
     ## Use "127.0.0.1" instead of "localhost" below if you want to test only
     ## for IPv4. For IPv6, use "[::1]". By leaving as "localhost", Mayhem will
