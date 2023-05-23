@@ -27,7 +27,7 @@ cmds:
   # (when "@@" is omitted Mayhem defaults to stdin inputs)
   - cmd: {COMMAND}
     {SECOND_COMMAND}
-    env: {ENV}
+    {ENV}
     {LIBFUZZER}
     {AFL}
     {HONGGFUZZ}
@@ -44,6 +44,6 @@ cmds:
     ## that length will be truncated. Be very careful about increasing this
     ## limit as it can severely affect your fuzzer performance.
     {MAX_LENGTH}
-    {TIMEOUT}
+    {CMD_TIMEOUT}
     {MEMORY_LIMIT}
     {DICTIONARY}

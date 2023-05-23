@@ -31,35 +31,38 @@ mayhemfile(
     gid = "0",
     max_length = "8192",
     cwd = "/bin",
-    filepath: "/tmp/customfile",
-    env = {"FOO"="foo", "BAR"="bar"},
-    timeout: "3",
-    memory_limit: "8192",
-    sanitizer: "false",
-    libfuzzer: "false",
-    afl: "false",
-    honggfuzz: "false",
-    dictionary: ""
+    filepath = "/tmp/customfile",
+    env = [
+      "FOO: foo",
+      "BAR: bar"
+    ],
+    cmd_timeout = "3",
+    memory_limit = "8192",
+    sanitizer = "false",
+    libfuzzer = "false",
+    afl = "false",
+    honggfuzz = "false",
+    dictionary = ""
 )
 
 # Generates a network target Mayhemfile
 mayhemfile(
     name = "lighttpd",
-    version = "2.3"
+    version = "2.3",
     project = "bazel_rules",
     target = "lighttpd",
     command = "/usr/local/sbin/lighttpd -D -f /usr/local/etc/lighttpd.conf",
-    image = "forallsecure/lighttpd:vulnerable"
-    network = {
-      url: "tcp://localhost:80",
-      timeout: "2",
-      client: "false"
-    },
+    image = "forallsecure/lighttpd:vulnerable",
+    network = [
+      "url: tcp://localhost:80",
+      "timeout: 2",
+      "client: false"
+    ],
     tasks = [
       "exploitability_factors",
       "regression_testing",
       "behavior_testing",
       "coverage_analysis"
     ],
-    duration: "120"
+    duration = "120"
 )
